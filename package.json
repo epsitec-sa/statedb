@@ -1,0 +1,39 @@
+{
+  "name": "statedb",
+  "version": "0.1.0",
+  "description": "Save you app state",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "babel src --out-dir lib",
+    "build": "babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "test": "mocha test/**/*.js",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epsitec-sa/statedb.git"
+  },
+  "keywords": [
+    "state",
+    "storage",
+    "react"
+  ],
+  "author": "Samuel Loup",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/epsitec-sa/statedb/issues"
+  },
+  "homepage": "https://github.com/epsitec-sa/statedb#readme",
+  "dependencies": {
+    "lowdb": "^0.12.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "rimraf": "^2.5.1"
+  }
+}
