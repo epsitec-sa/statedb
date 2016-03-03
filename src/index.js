@@ -1,7 +1,13 @@
 'use strict';
 export default class StateDb {
-  constructor (appKey) {
-    this._db = require ('./storage.js')(appKey);
+  constructor (dbPath, appKey) {
+    if (!dbPath) {
+      throw new Error ('a database path must be provided');
+    }
+    if (!appKey) {
+      appKey = dbPath;
+    }
+    this._db = require ('./storage.js')(dbPath, appKey);
     this._existingState = null;
   }
 

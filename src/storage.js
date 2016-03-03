@@ -2,38 +2,38 @@
 const low = require ('lowdb');
 const storage = require ('lowdb/file-async');
 
-const store = (appKey) => {
-  return low (`${appKey}.db`, { storage });
+const store = (dbPath) => {
+  return low (`${dbPath}.db`, { storage });
 };
 
-const initDb = (appKey, initialState) => {
+const initDb = (dbPath, appKey, initialState) => {
   const appState = Object.assign ({
     app: appKey
   }, initialState);
-  return store (appKey) ('states').push (appState);
+  return store (dbPath) ('states').push (appState);
 };
 
-const getAppState = (appKey) => {
-  return store (appKey) ('states')
+const getAppState = (dbPath, appKey) => {
+  return store (dbPath) ('states')
     .chain ()
     .find ({ app: appKey });
 };
 
-const getPersistedState = (appKey, stateKey) => {
-  const value = getAppState (appKey).value ();
+const getPersistedState = (dbPath, appKey, stateKey) => {
+  const value = getAppState (dbPath, appKey).value ();
   return value ? value[stateKey] : null;
 };
 
-const persistState = (appKey, stateKey, state) => {
-  return getAppState (appKey)
+const persistState = (dbPath, appKey, stateKey, state) => {
+  return getAppState (dbPath, appKey)
           .assign ({ [stateKey]: state })
           .value ();
 };
 
-module.exports = (appKey) => {
+module.exports = (dbPath, appKey) => {
   return {
-    initDb: (initialState) => initDb (appKey, initialState),
-    getPersistedState: (stateKey) => getPersistedState (appKey, stateKey),
-    persistState: (stateKey, state) => persistState (appKey, stateKey, state)
+    initDb: (initialState) => initDb (dbPath, appKey, initialState),
+    getPersistedState: (stateKey) => getPersistedState (dbPath, appKey, stateKey),
+    persistState: (stateKey, state) => persistState (dbPath, appKey, stateKey, state)
   };
 };
