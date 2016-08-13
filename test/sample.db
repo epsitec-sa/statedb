@@ -1,0 +1,10 @@
+{
+  "states": [
+    {
+      "app": "myApp",
+      "myState": {
+        "foo": "bar"
+      }
+    }
+  ]
+}
