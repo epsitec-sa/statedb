@@ -19,9 +19,13 @@ describe ('index: new state', function () {
   });
 
   it ('save and load state', function () {
-    stateDb.saveState ('myState', {foobar: 'foobar'});
-    const state = stateDb.loadState ('myState');
-    expect (state).to.be.eql ({foobar: 'foobar'});
+    stateDb.saveState ('myState1', {foo: 'foo'});
+    stateDb.saveState ('myState2', {bar: 'bar'});
+
+    const state1 = stateDb.loadState ('myState1');
+    expect (state1).to.be.eql ({foo: 'foo'});
+    const state2 = stateDb.loadState ('myState2');
+    expect (state2).to.be.eql ({bar: 'bar'});
   });
 });
 
