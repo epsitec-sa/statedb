@@ -59,6 +59,5 @@
     "allowRegex":                             true
   },
 
-  "esnext":                                   true,
   "requireSemicolons":                        true
 }
