@@ -4,17 +4,17 @@ Little wrapper around lowdb, for persitence of states.
 
 ## Usage:
 
-### new StateDb (dbPath, 'appkey (optional)');
+### new StateDb (dbPath, [appkey], [options]);
 
 StateDb create a file at `dbPath` and add `.db` extensions.
 So, if you pass `/mount/app.settings` the result in the filesystem is
 `/mount/app.settings.db`
 
 With the `appkey` you can categorize your app/domain in the db file.
-For exemple, if you wanna persist another domain in the same file you can
+For example, if you wanna persist another domain in the same file you can
 do:
 
-```
+```js
 const myDbPath = '/mount/local/file';
 const UsersDb = new StateDb (myDbPath, 'users');
 const CustomersDb = new StateDb (myDbPath, 'customers');
@@ -26,6 +26,13 @@ If you try to open the Db with another path, the content is reseted.
 
 In general, if you provide a database as ressource, don't ommit the `appkey`.
 
+It's possible to use an async database by passing the option:
+```json
+{
+  "async": true
+}
+```
+
 ### saveState ('state key', value)
 
 Save something at `state key`.
@@ -36,19 +43,20 @@ Load something that reside at `state key`.
 
 ## Exemple:
 
-```
+```js
 import StateDb from 'statedb';
 const myDbPath = '/mount/local/burritos';
 const savedSettings = new StateDb (myDbPath, 'settings');
-const savedUsers = new StateDb (myDbPath, 'users');
-// saving
+const savedUsers = new StateDb (myDbPath, 'users', {async: true});
+
+// saving (async)
 savedSettings.saveState ('bobSettings', {
   x: 800,
   y: 600,
   locale: 'en_US'
 });
 
-// loading
+// loading (sync)
 const settings = savedSettings.loadState ('settings');
 // todo: do some magic with loaded settings...
 ```
