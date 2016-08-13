@@ -4,9 +4,6 @@
   "description": "Save you app state",
   "main": "lib/index.js",
   "scripts": {
-    "prepublish": "babel src --out-dir lib",
-    "build": "babel src --out-dir lib",
-    "clean": "rimraf lib",
     "test": "mocha test/**/*.js",
     "test:watch": "npm run test -- --watch"
   },
@@ -29,11 +26,7 @@
     "lowdb": "^0.12.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.4.5",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-stage-0": "^6.3.13",
     "chai": "^3.5.0",
-    "mocha": "^2.4.5",
-    "rimraf": "^2.5.1"
+    "mocha": "^2.4.5"
   }
 }
