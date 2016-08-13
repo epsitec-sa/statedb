@@ -41,7 +41,7 @@ Save something at `state key`.
 
 Load something that reside at `state key`.
 
-## Exemple:
+## Example:
 
 ```js
 import StateDb from 'statedb';
