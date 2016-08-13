@@ -1,6 +1,6 @@
 # StateDb
 
-Little wrapper around lowdb, for async persitence of states.
+Little wrapper around lowdb, for persitence of states.
 
 ## Usage:
 
@@ -28,11 +28,11 @@ In general, if you provide a database as ressource, don't ommit the `appkey`.
 
 ### saveState ('state key', value)
 
-Save async'nsly something at `state key`.
+Save something at `state key`.
 
 ### loadState ('state key')
 
-Load sync'nsly something that reside at `state key`.
+Load something that reside at `state key`.
 
 ## Exemple:
 
@@ -41,14 +41,14 @@ import StateDb from 'statedb';
 const myDbPath = '/mount/local/burritos';
 const savedSettings = new StateDb (myDbPath, 'settings');
 const savedUsers = new StateDb (myDbPath, 'users');
-// saving (async op)
+// saving
 savedSettings.saveState ('bobSettings', {
   x: 800,
   y: 600,
   locale: 'en_US'
 });
 
-// loading (sync op)
+// loading
 const settings = savedSettings.loadState ('settings');
 // todo: do some magic with loaded settings...
 ```
