@@ -1,6 +1,6 @@
 {
   "name": "statedb",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Save you app state",
   "main": "lib/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "storage",
     "react"
   ],
-  "author": "Samuel Loup",
+  "author": "Samuel Loup & Mathieu Schroeter",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/epsitec-sa/statedb/issues"
