@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/epsitec-sa/statedb#readme",
   "dependencies": {
+    "lodash": "^4.15.0",
     "lowdb": "^0.13.1"
   },
   "devDependencies": {
