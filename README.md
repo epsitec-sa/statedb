@@ -32,6 +32,8 @@ It's possible to use an async database by passing the option:
   "async": true
 }
 ```
+in this case, you must call `waitForWrites (() => console.log ('done'))` to be
+sure that all your async writes are resolved, before leaving the process.
 
 ### saveState ('state key', value)
 
@@ -60,3 +62,8 @@ savedSettings.saveState ('bobSettings', {
 const settings = savedSettings.loadState ('settings');
 // todo: do some magic with loaded settings...
 ```
+
+### waitForWrites (done)
+
+Call the `done` callback when all previous pending writes are resolved.
+Usefull when you use async database option.
