@@ -36,3 +36,37 @@ describe ('index: existing state', function () {
     expect (state).to.be.eql ({foo: 'bar'});
   });
 });
+
+describe ('index: wait for async writes', function () {
+  let stateDb = null;
+
+  before (function () {
+    stateDb = new StateDb (output, 'myApp', {
+      async: true
+    });
+  });
+
+  after (function () {
+    fs.unlinkSync (`${output}.db`);
+  });
+
+  it ('has 1000 pending writes', function () {
+    for (let i = 0; i < 1000; i++) {
+      stateDb.saveState ('myState3', {[i]: i});
+    }
+    expect (stateDb.pendingWrites).to.be.eql (1000);
+  });
+
+  it ('wait and flush pending writes', function (done) {
+    stateDb.waitForWrites (() => {
+      expect (stateDb.pendingWrites).to.be.eql (0);
+      done ();
+    });
+  });
+
+  it ('is consistent after wait', function () {
+    const state = stateDb.loadState ('myState3');
+    expect (state[999]).to.be.eql (999);
+  });
+
+});
