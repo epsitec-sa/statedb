@@ -1,7 +1,7 @@
 {
   "name": "statedb",
   "version": "2.1.0",
-  "description": "Save you app state",
+  "description": "Save your app state!",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha test/**/*.js",
