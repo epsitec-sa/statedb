@@ -45,7 +45,7 @@ describe ('async storage', function () {
     fs.unlinkSync (`${output}.db`);
   });
 
-  it ('persis state return a promise', function () {
+  it ('persistState () return a promise', function () {
     const promise = state.persistState ('yo', {yo: 'ba'});
     expect (typeof promise.then).to.be.eql ('function');
     return promise.then ();

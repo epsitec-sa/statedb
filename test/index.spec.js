@@ -69,4 +69,10 @@ describe ('index: wait for async writes', function () {
     expect (state[999]).to.be.eql (999);
   });
 
+  it ('saveState () return a promise', function () {
+    const promise = stateDb.saveState ('myState4', {foo: 'bar'});
+    expect (typeof promise.then).to.be.eql ('function');
+    return promise.then ();
+  });
+
 });
