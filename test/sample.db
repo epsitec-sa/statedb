@@ -1,10 +1,16 @@
 {
-  "states": [
-    {
+  "states": {
+    "myApp": {
       "app": "myApp",
       "myState": {
         "foo": "bar"
       }
+    },
+    "mySecondApp": {
+      "app": "mySecondApp",
+      "myState": {
+        "al": "bert"
+      }
     }
-  ]
+  }
 }

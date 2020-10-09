@@ -30,10 +30,19 @@ describe('index: new state', function () {
 });
 
 describe('index: existing state', function () {
-  it('current state', function () {
+  it('current state myApp', function () {
     const stateDb = new StateDb(path.join(__dirname, './sample'), 'myApp');
     const state = stateDb.loadState('myState');
     expect(state).to.be.eql({foo: 'bar'});
+  });
+
+  it('current state mySecondApp', function () {
+    const stateDb = new StateDb(
+      path.join(__dirname, './sample'),
+      'mySecondApp'
+    );
+    const state = stateDb.loadState('myState');
+    expect(state).to.be.eql({al: 'bert'});
   });
 });
 
