@@ -1,6 +1,6 @@
 {
   "name": "statedb",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Save your app state!",
   "main": "lib/index.js",
   "scripts": {
