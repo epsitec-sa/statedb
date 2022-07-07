@@ -38,18 +38,26 @@ Load something that reside at `state key`.
 
 ```js
 import StateDb from 'statedb';
-const myDbPath = '/mount/local/burritos';
-const savedSettings = new StateDb(myDbPath, 'settings');
-const savedUsers = new StateDb(myDbPath, 'users');
 
-// saving
-savedSettings.saveState('bobSettings', {
-  x: 800,
-  y: 600,
-  locale: 'en_US',
-});
+async function main() {
+  const myDbPath = '/mount/local/burritos';
+  const savedSettings = new StateDb(myDbPath, 'settings');
+  const savedUsers = new StateDb(myDbPath, 'users');
 
-// loading
-const settings = savedSettings.loadState('settings');
-// todo: do some magic with loaded settings...
+  await savedSettings.init();
+  await savedUsers.init();
+
+  // saving
+  savedSettings.saveState('bobSettings', {
+    x: 800,
+    y: 600,
+    locale: 'en_US',
+  });
+
+  // loading
+  const settings = savedSettings.loadState('settings');
+  // todo: do some magic with loaded settings...
+}
+
+main();
 ```
