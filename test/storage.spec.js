@@ -9,8 +9,8 @@ const output = path.join(__dirname, './test');
 describe('storage', function () {
   let state = null;
 
-  beforeEach(function () {
-    state = storage(output, 'theKey');
+  beforeEach(async function () {
+    state = await storage(output, 'theKey');
     state.initDb({});
   });
 

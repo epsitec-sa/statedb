@@ -10,8 +10,9 @@ const output = path.join(__dirname, './test');
 describe('index: new state', function () {
   let stateDb = null;
 
-  beforeEach(function () {
+  beforeEach(async function () {
     stateDb = new StateDb(output, 'myApp');
+    await stateDb.initEmpty();
   });
 
   afterEach(function () {
@@ -33,9 +34,11 @@ describe('index: new two states', function () {
   let stateDb1 = null;
   let stateDb2 = null;
 
-  beforeEach(function () {
+  beforeEach(async function () {
     stateDb1 = new StateDb(output, 'myApp1');
     stateDb2 = new StateDb(output, 'myApp2');
+    await stateDb1.initEmpty();
+    await stateDb2.initEmpty();
   });
 
   afterEach(function () {
@@ -54,17 +57,19 @@ describe('index: new two states', function () {
 });
 
 describe('index: existing state', function () {
-  it('current state myApp', function () {
+  it('current state myApp', async function () {
     const stateDb = new StateDb(path.join(__dirname, './sample'), 'myApp');
+    await stateDb.init();
     const state = stateDb.loadState('myState');
     expect(state).to.be.eql({foo: 'bar'});
   });
 
-  it('current state mySecondApp', function () {
+  it('current state mySecondApp', async function () {
     const stateDb = new StateDb(
       path.join(__dirname, './sample'),
       'mySecondApp'
     );
+    await stateDb.init();
     const state = stateDb.loadState('myState');
     expect(state).to.be.eql({al: 'bert'});
   });
