@@ -1,0 +1,3 @@
+[update-version]
+	package-json = package.json
+	package-lock = package-lock.json
